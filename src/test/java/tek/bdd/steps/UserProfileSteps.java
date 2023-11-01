@@ -17,6 +17,7 @@ import java.util.Map;
 
 public class UserProfileSteps extends SeleniumUtility {
 
+
     @When("the user enters valid CSR credentials username {string} password {string}")
     public void the_user_enters_valid_csr_credentials_username_password(String username, String password) throws InterruptedException {
         enterValue(UserProfilePage.usernameField, username);
