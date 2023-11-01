@@ -46,6 +46,11 @@ public class CreateAccountSteps extends SeleniumUtility {
         enterValue(CreateAccountPage.lastNameField, formData.get("lastName"));
         selectFromDropDown(CreateAccountPage.genderField, formData.get("gender"));
         selectFromDropDown(CreateAccountPage.maritalStatusField, formData.get("maritalStatus"));
+
+        // Calculate date of birth based on age
+        int age = Integer.parseInt(formData.get("dateOfBirth"));
+        String calculatedDateOfBirth = calculateDateOfBirth(age);
+        enterValue(CreateAccountPage.dateOfBirth, calculatedDateOfBirth);
         enterValue(CreateAccountPage.dateOfBirth, formData.get("dateOfBirth"));
         enterValue(CreateAccountPage.employmentStatusField, formData.get("employmentStatus"));
         Thread.sleep(2000);
@@ -100,8 +105,9 @@ public class CreateAccountSteps extends SeleniumUtility {
     @Then("the user should see an error message indicating {string}")
     public void the_user_should_see_an_error_message_indicating(String expectedTitle) {
 
-        String actualTitle = getElementText(CreateAccountPage.errorBanner);
-
+        System.out.println("Expected Title: " + expectedTitle); // for debug
+        String actualTitle = getErrorMessage(CreateAccountPage.errorBanner);
+        System.out.println("Actual Title: " + actualTitle); // for debug
         Assert.assertEquals(expectedTitle, actualTitle);
 
     }

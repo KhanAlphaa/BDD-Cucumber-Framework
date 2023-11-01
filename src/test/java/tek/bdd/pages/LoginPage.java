@@ -12,5 +12,7 @@ public class LoginPage {
     public final static By titleHeader = By.xpath("//h2[contains(text(),'Customer Service Portal')]");
     //h2[contains(text(),'Customer Service Portal')]
 
-    public final static By errorBanner = By.xpath("//div[contains(text(),'ERROR')]");
+    public final static By errorUserNotFound = By.xpath("//body/div[@id='root']/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]");
+    public final static By errorPasswordNotMatched = By.xpath("//body/div[@id='root']/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]");
+
 }

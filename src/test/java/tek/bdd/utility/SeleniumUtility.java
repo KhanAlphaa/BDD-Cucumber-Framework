@@ -68,6 +68,27 @@ public class SeleniumUtility extends BaseSetup {
         return waitUntilVisibilityOfAllElement(locator);
     }
 
+    public String getErrorMessage(By locator) {
+        return getElementText(locator).replace("\n", " ");
+    }
+
+
+    public String calculateDateOfBirth(int age) {
+        // Get the current date
+        Calendar calendar = Calendar.getInstance();
+
+        // Subtract the age in years from the current date
+        calendar.add(Calendar.YEAR, -age);
+
+        // Get the calculated birthdate
+        Date calculatedBirthdate = calendar.getTime();
+
+        // Format the calculated birthdate as "MM/dd/yyyy"
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        return dateFormat.format(calculatedBirthdate);
+    }
+
+
 
 
 }

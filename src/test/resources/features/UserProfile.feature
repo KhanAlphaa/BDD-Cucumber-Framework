@@ -1,3 +1,4 @@
+@Regression_UserProfile
 Feature: Validate Login and Profile Information
 
   Background: Repetitive steps for Profile Button
@@ -6,7 +7,7 @@ Feature: Validate Login and Profile Information
     And the user clicks on the sign-in button
     And the user clicks on the profile button
 
-  @UserProfileSideDrawerValidation
+  @Smoke_ProfileSideDrawerValidation
   Scenario: CSR login and profile validation
     When Validate the Profile Side Drawer should be "Profile"
     Then the information in the Profile Side Drawer should be correct
@@ -14,7 +15,7 @@ Feature: Validate Login and Profile Information
       | Active | CSR       | Supervisor | supervisor | admin       |
 
 
-  @UserProfileLoginNLogout
+  @Smoke_LoginNLogout
   Scenario: CSR logs in, logs out, and returns to the home page
     And the user clicks on the logout button
     Then the user is redirected to the home page
