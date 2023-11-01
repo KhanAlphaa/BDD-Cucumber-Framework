@@ -1,8 +1,8 @@
-@tekInsuranceHomePage
-Feature: TEK Insurance App Functionality
+@Regression_HomePage
+Feature: TEK Insurance HomePage
 
 
-  @HomePage
+  @Smoke_HomePageValidation
   Scenario: Home Page Validation
 
     Given Validate the title should be "Tek Insurance UI"

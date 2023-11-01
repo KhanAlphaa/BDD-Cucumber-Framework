@@ -59,8 +59,22 @@ public class LoginSteps extends SeleniumUtility {
 
     @Then("Validate the error message {string}")
     public void validate_the_error_message(String expectedErrorMessage) {
+        System.out.println("Expect error Message: " + expectedErrorMessage);
 
-        String actualErrorMessage = getElementText(LoginPage.errorBanner);
+        String actualErrorMessage;
+
+        if (expectedErrorMessage.equals("ERROR User tamim not found")) {
+            actualErrorMessage = getErrorMessage(LoginPage.errorUserNotFound);
+        } else if (expectedErrorMessage.equals("ERROR Password not matched")) {
+            actualErrorMessage = getErrorMessage(LoginPage.errorPasswordNotMatched);
+        } else {
+
+            // Handle other error messages if needed
+            actualErrorMessage = "Error message not recognized";
+        }
+
+
+        System.out.println("Actual Error Message: " + actualErrorMessage);
 
         Assert.assertEquals("Validate error message",
                 expectedErrorMessage,
