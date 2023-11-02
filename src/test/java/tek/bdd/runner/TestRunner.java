@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "classpath:features",
         glue = "tek.bdd.steps",
-        tags = "@Regression_Accounts",
+        tags = "@Regression_CreatePrimaryAccount",
         dryRun = false, //if true wont run steps just check for un-implemented steps
         plugin = {
                 "html:target/html_report/report.html",

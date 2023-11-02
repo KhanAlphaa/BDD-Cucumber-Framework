@@ -11,7 +11,7 @@ Feature: Tek Insurance Create Primary Account Form
     When the user clicks on the create primary account button
     And the user fills out the form with the following data:
       | Field            | Value                  |
-      | email            | td60000987654@gmail.com |
+      | email            | td6010200987654@gmail.com |
       | title            | Mr.                    |
       | firstName        | kachalo                |
       | lastName         | shalgham               |
@@ -21,7 +21,7 @@ Feature: Tek Insurance Create Primary Account Form
       | dateOfBirth      | 40                     |
     And the user clicks on the Create Account Button
     Then the user navigates to the "Sign up your account" page
-    And the Email Address displayed on the page should be "td60000987654@gmail.com"
+    And the Email Address displayed on the page should be "td6010200987654@gmail.com"
 
   @Smoke_CreateAccountWithExistingEmail
   Scenario: User Attempts to Register with an Existing Email Address
