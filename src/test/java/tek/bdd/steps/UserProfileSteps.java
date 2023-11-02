@@ -42,10 +42,10 @@ public class UserProfileSteps extends SeleniumUtility {
     @When("Validate the Profile Side Drawer should be {string}")
     public void validate_the_profile_side_drawer_should_be(String expectedTitle) {
 
-        System.out.println(expectedTitle);
+        //System.out.println(expectedTitle);
 
         String actualTitle = getElementText(UserProfilePage.profileHeader);
-        System.out.println(actualTitle);
+        //System.out.println(actualTitle);
 
         Assert.assertEquals("Title does not match",
                 expectedTitle,
