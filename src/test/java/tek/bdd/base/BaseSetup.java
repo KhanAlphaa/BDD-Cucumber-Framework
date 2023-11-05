@@ -40,10 +40,10 @@ public class BaseSetup {
 
 
         if (browserType.equalsIgnoreCase("chrome")) {
-            // Add headless option to Chrome browser
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless");
-            driver = new ChromeDriver(options);
+//            // Add headless option to Chrome browser
+//            ChromeOptions options = new ChromeOptions();
+//            options.addArguments("--headless");
+            driver = new ChromeDriver();
         } else if (browserType.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();
         } else if (browserType.equalsIgnoreCase("edge")) {
