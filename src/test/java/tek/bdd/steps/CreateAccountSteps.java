@@ -40,6 +40,8 @@ public class CreateAccountSteps extends SeleniumUtility {
     @When("the user fills out the form with the following data:")
     public void fillOutFormWith(Map<String, String> formData) throws InterruptedException {
 
+
+
         enterValue(CreateAccountPage.emailAddressField, formData.get("email"));
         selectFromDropDown(CreateAccountPage.titleField, formData.get("title"));
         enterValue(CreateAccountPage.firstNameField, formData.get("firstName"));
@@ -48,10 +50,12 @@ public class CreateAccountSteps extends SeleniumUtility {
         selectFromDropDown(CreateAccountPage.maritalStatusField, formData.get("maritalStatus"));
 
         // Calculate date of birth based on age
+        // Assuming 'dateOfBirth' is the field for the age
         int age = Integer.parseInt(formData.get("dateOfBirth"));
         String calculatedDateOfBirth = calculateDateOfBirth(age);
+
+        // Use the calculated date of birth in the form
         enterValue(CreateAccountPage.dateOfBirth, calculatedDateOfBirth);
-        enterValue(CreateAccountPage.dateOfBirth, formData.get("dateOfBirth"));
         enterValue(CreateAccountPage.employmentStatusField, formData.get("employmentStatus"));
         Thread.sleep(2000);
 
@@ -94,6 +98,14 @@ public class CreateAccountSteps extends SeleniumUtility {
         enterValue(CreateAccountPage.firstNameField, formData.get("firstName"));
         enterValue(CreateAccountPage.lastNameField, formData.get("lastName"));
         selectFromDropDown(CreateAccountPage.genderField, formData.get("gender"));
+        // Calculate date of birth based on age
+        // Assuming 'dateOfBirth' is the field for the age
+        int age = Integer.parseInt(formData.get("dateOfBirth"));
+        String calculatedDateOfBirth = calculateDateOfBirth(age);
+
+        // Use the calculated date of birth in the form
+        enterValue(CreateAccountPage.dateOfBirth, calculatedDateOfBirth);
+
         selectFromDropDown(CreateAccountPage.maritalStatusField, formData.get("maritalStatus"));
 
         Thread.sleep(3000);
@@ -105,9 +117,9 @@ public class CreateAccountSteps extends SeleniumUtility {
     @Then("the user should see an error message indicating {string}")
     public void the_user_should_see_an_error_message_indicating(String expectedTitle) {
 
-        System.out.println("Expected Title: " + expectedTitle); // for debug
+       // System.out.println("Expected Title: " + expectedTitle); // for debug
         String actualTitle = getErrorMessage(CreateAccountPage.errorBanner);
-        System.out.println("Actual Title: " + actualTitle); // for debug
+      //  System.out.println("Actual Title: " + actualTitle); // for debug
         Assert.assertEquals(expectedTitle, actualTitle);
 
     }

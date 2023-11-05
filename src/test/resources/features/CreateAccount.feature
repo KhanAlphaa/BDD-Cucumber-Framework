@@ -10,18 +10,18 @@ Feature: Tek Insurance Create Primary Account Form
   Scenario: Fill and Submit Create Primary Account Holder Form with Data
     When the user clicks on the create primary account button
     And the user fills out the form with the following data:
-      | Field            | Value                  |
-      | email            | td6010200987654@gmail.com |
-      | title            | Mr.                    |
-      | firstName        | kachalo                |
-      | lastName         | shalgham               |
-      | gender           | Male                   |
-      | maritalStatus    | Single                 |
-      | employmentStatus | Employed               |
-      | dateOfBirth      | 40                     |
+      | Field            | Value                     |
+      | email            | dost01010120407@gmail.com |
+      | title            | Mr.                       |
+      | firstName        | kachalo                   |
+      | lastName         | shalgham                  |
+      | gender           | Male                      |
+      | maritalStatus    | Single                    |
+      | employmentStatus | Employed                  |
+      | dateOfBirth      | 80                      |
     And the user clicks on the Create Account Button
     Then the user navigates to the "Sign up your account" page
-    And the Email Address displayed on the page should be "td6010200987654@gmail.com"
+    And the Email Address displayed on the page should be "dost01010120407@gmail.com"
 
   @Smoke_CreateAccountWithExistingEmail
   Scenario: User Attempts to Register with an Existing Email Address
@@ -34,6 +34,7 @@ Feature: Tek Insurance Create Primary Account Form
       | lastName      | Romi         |
       | gender        | Female       |
       | maritalStatus | Single       |
+      | dateOfBirth   | 33           |
     And the user clicks on the Create Account Button
     Then the user should see an error message indicating "ERROR Account with email td@gmail.com is exist"
 

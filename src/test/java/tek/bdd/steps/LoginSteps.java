@@ -45,12 +45,7 @@ public class LoginSteps extends SeleniumUtility {
     @Then("the user should be on the {string} page")
     public void the_user_should_be_on_the_page(String expectedPageTitle) {
 
-        System.out.println(expectedPageTitle);
-
         String actualPageTitle = getElementText(LoginPage.titleHeader);
-
-        System.out.println(actualPageTitle);
-
         Assert.assertEquals("Validate page title",
                 expectedPageTitle,
                 actualPageTitle);
@@ -69,12 +64,8 @@ public class LoginSteps extends SeleniumUtility {
             actualErrorMessage = getErrorMessage(LoginPage.errorPasswordNotMatched);
         } else {
 
-            // Handle other error messages if needed
             actualErrorMessage = "Error message not recognized";
         }
-
-
-        System.out.println("Actual Error Message: " + actualErrorMessage);
 
         Assert.assertEquals("Validate error message",
                 expectedErrorMessage,

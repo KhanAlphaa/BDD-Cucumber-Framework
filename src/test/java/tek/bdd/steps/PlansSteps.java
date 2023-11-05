@@ -34,37 +34,14 @@ public class PlansSteps extends SeleniumUtility {
 
     @When("the user validate Create Date is today's date in (EST Time zone)")
     public void the_user_validate_create_date_is_today_s_date_in_est_time_zone_as() {
-        List<WebElement> elements = getListOfElements(PlansPage.dateCreatedColumn);
 
-        // Get today's date in the EST time zone
-        LocalDate currentDate = LocalDate.now(ZoneId.of("US/Eastern"));
-
-        // Format the current date to match your expected format
-        String expectedDate = currentDate.format(DateTimeFormatter.ofPattern("MMMM d, yyyy"));
-
-        for (WebElement element : elements) {
-            String actualText = element.getText();
-            Assert.assertEquals("validate Create Date is today's date", expectedDate, actualText);
-        }
-
+        validateCreateDateIsTodayInESTTimeZone(PlansPage.dateCreatedColumn);
 
     }
 
     @When("the user validate Date Expire is a day after (EST Time Zone)")
     public void the_user_validate_date_expire_is_a_day_after_est_time_zone() {
-        List<WebElement> elements = getListOfElements(PlansPage.dateExpireColumn);
-
-        // Get tomorrow's date in the EST time zone
-        LocalDate currentDate = LocalDate.now(ZoneId.of("US/Eastern"));
-        LocalDate expectedDate = currentDate.plusDays(1);
-
-        // Format the expected date to match your format
-        String expectedDateText = expectedDate.format(DateTimeFormatter.ofPattern("MMMM d, yyyy"));
-
-        for (WebElement element : elements) {
-            String actualText = element.getText();
-            Assert.assertEquals("validate Expire Date is a day after", expectedDateText, actualText);
-        }
+        validateDateExpireIsDayAfterESTTimeZone(PlansPage.dateExpireColumn);
 
     }
 

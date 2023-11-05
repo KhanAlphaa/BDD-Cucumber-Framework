@@ -41,40 +41,30 @@ public class UserProfileSteps extends SeleniumUtility {
 
     @When("Validate the Profile Side Drawer should be {string}")
     public void validate_the_profile_side_drawer_should_be(String expectedTitle) {
-
-        //System.out.println(expectedTitle);
-
         String actualTitle = getElementText(UserProfilePage.profileHeader);
-        //System.out.println(actualTitle);
-
         Assert.assertEquals("Title does not match",
                 expectedTitle,
                 actualTitle);
 
     }
 
-
     @Then("the information in the Profile Side Drawer should be correct")
     public void the_information_in_the_profile_side_drawer_should_be_correct(DataTable dataTable) {
         List<Map<String, String>> tableData = dataTable.asMaps(String.class, String.class);
         Map<String, String> expectedData = tableData.get(0);
 
-        // Retrieve the expected values from the DataTable
         String expectedStatus = expectedData.get("Status");
         String expectedUserType = expectedData.get("User Type");
         String expectedName = expectedData.get("Name");
         String expectedUsername = expectedData.get("Username");
         String expectedAuthorities = expectedData.get("Authorities");
 
-
-        // Retrieve the actual values from the page object
         String actualStatus = getElementText(UserProfilePage.profileStatus);
         String actualUserType = getElementText(UserProfilePage.profileUserType);
         String actualName = getElementText(UserProfilePage.profileName);
         String actualUsername = getElementText(UserProfilePage.profileUsername);
         String actualAuthorities = getElementText(UserProfilePage.profileAuthorities);
 
-        // Use Assert class to compare actual and expected values
         Assert.assertEquals("Status does not match", expectedStatus, actualStatus);
         Assert.assertEquals("User Type does not match", expectedUserType, actualUserType);
         Assert.assertEquals("Name does not match", expectedName, actualName);

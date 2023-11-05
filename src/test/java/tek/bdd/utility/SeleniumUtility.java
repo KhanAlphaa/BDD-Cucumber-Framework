@@ -1,5 +1,6 @@
 package tek.bdd.utility;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -12,6 +13,9 @@ import tek.bdd.base.BaseSetup;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -63,29 +67,48 @@ public class SeleniumUtility extends BaseSetup {
         dropdown.selectByVisibleText(option);
     }
 
-    public List<WebElement> getListOfElements(By locator) {
+    public List<WebElement> getListOfElements(By locator)
+    {
 
         return waitUntilVisibilityOfAllElement(locator);
     }
 
     public String getErrorMessage(By locator) {
+        waitUntilVisibilityOfElement(locator);
         return getElementText(locator).replace("\n", " ");
     }
 
 
     public String calculateDateOfBirth(int age) {
         // Get the current date
-        Calendar calendar = Calendar.getInstance();
-
-        // Subtract the age in years from the current date
-        calendar.add(Calendar.YEAR, -age);
-
-        // Get the calculated birthdate
-        Date calculatedBirthdate = calendar.getTime();
-
+        LocalDate currentDate = LocalDate.now();
+        // Calculate the birthdate by subtracting the age in years
+        LocalDate birthdate = currentDate.minusYears(age);
         // Format the calculated birthdate as "MM/dd/yyyy"
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        return dateFormat.format(calculatedBirthdate);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        return birthdate.format(formatter);
+    }
+
+
+    public void validateCreateDateIsTodayInESTTimeZone(By locator) {
+        List<WebElement> elements = getListOfElements(locator);
+        LocalDate currentDate = LocalDate.now(ZoneId.of("US/Eastern"));
+        String expectedDate = currentDate.format(DateTimeFormatter.ofPattern("MMMM d, yyyy"));
+        for (WebElement element : elements) {
+            String actualText = element.getText();
+            Assert.assertEquals("validate Create Date is today's date", expectedDate, actualText);
+        }
+    }
+
+    public void validateDateExpireIsDayAfterESTTimeZone(By locator) {
+        List<WebElement> elements = getListOfElements(locator);
+        LocalDate currentDate = LocalDate.now(ZoneId.of("US/Eastern"));
+        LocalDate expectedDate = currentDate.plusDays(1);
+        String expectedDateText = expectedDate.format(DateTimeFormatter.ofPattern("MMMM d, yyyy"));
+        for (WebElement element : elements) {
+            String actualText = element.getText();
+            Assert.assertEquals("validate Expire Date is a day after", expectedDateText, actualText);
+        }
     }
 
 

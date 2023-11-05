@@ -20,8 +20,7 @@ public class HomePageSteps extends SeleniumUtility {
     @Then("Validate the home page header should be {string}")
     public void validate_the_home_page_header_should_be(String expectedTitle) {
         String actualTitle = getElementText(HomePage.homePageHeaderLocator);
-//        System.out.println("Expected Title: " + expectedTitle); // Print expected title for debug purpose
-//        System.out.println("Actual Title: " + actualTitle); // Print actual title for debug purpose
+
         Assert.assertEquals("Validate Header Title",
                 expectedTitle,
                 actualTitle);
